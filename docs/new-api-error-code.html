@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>返回码 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="|返回码|内容|"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="返回码 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://tcpay.info/index.html"/><meta property="og:description" content="|返回码|内容|"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class=""><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>通用</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-info.html">说明</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/new-api-error-code.html">返回码</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-in-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-3.html">模式3 - H5页面下单</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-4.html">模式4 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-5.html">模式5 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">出金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-out-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-3.html">模式3 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-4.html">模式4 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-query.html">主动查询</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-notify.html">异步通知</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">返回码</h1></header><article><div><span><table>
+<thead>
+<tr><th>返回码</th><th>内容</th></tr>
+</thead>
+<tbody>
+<tr><td>100000</td><td>OK</td></tr>
+<tr><td>400001</td><td>参数错误</td></tr>
+<tr><td>400002</td><td>参数长度16至32位</td></tr>
+<tr><td>400003</td><td>下单金额不能小于等于0</td></tr>
+<tr><td>400004</td><td>参数不能为空</td></tr>
+<tr><td>500001</td><td>下单异常</td></tr>
+<tr><td>500002</td><td>下单失败</td></tr>
+<tr><td>500003</td><td>订单号重复</td></tr>
+<tr><td>500004</td><td>apiKey不存在或者错误</td></tr>
+<tr><td>500005</td><td>签名错误</td></tr>
+<tr><td>500006</td><td>订单不存在</td></tr>
+<tr><td>500007</td><td>暂无匹配金额挂单</td></tr>
+<tr><td>500009</td><td>请勿重复下单</td></tr>
+<tr><td>900003</td><td>访问受限</td></tr>
+<tr><td>900004</td><td>请求系统IO异常</td></tr>
+<tr><td>900005</td><td>未知错误</td></tr>
+<tr><td>900006</td><td>系统异常</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-info.html"><span class="arrow-prev">← </span><span>说明</span></a><a class="docs-next button" href="/docs/new-api-in-1.html"><span>模式1 - 聊天+自动分配币商</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
