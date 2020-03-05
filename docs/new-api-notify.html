@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>异步通知 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="接入方请提供此接口, 订单完成后, tradingchain将会通过这个接口通知接入方订单状态"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="异步通知 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="接入方请提供此接口, 订单完成后, tradingchain将会通过这个接口通知接入方订单状态"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class=""><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>订单状态</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-info.html">说明</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-error-code.html">返回码</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-in-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-3.html">模式3 - H5页面下单</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-4.html">模式4 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-5.html">模式5 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">出金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-out-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-3.html">模式3 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-4.html">模式4 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-query.html">主动查询</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/new-api-notify.html">异步通知</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>异步通知 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## 请求方式"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="异步通知 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="## 请求方式"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class=""><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>订单状态</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-info.html">说明</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-error-code.html">返回码</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-in-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-3.html">模式3 - H5页面下单</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-4.html">模式4 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-in-5.html">模式5 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">出金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-out-1.html">模式1 - 聊天+自动分配币商</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-2.html">模式2 - 聊天+币商列表</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-3.html">模式3 - 纯接口模式+JSON返回</a></li><li class="navListItem"><a class="navItem" href="/docs/new-api-out-4.html">模式4 - 交易所</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/new-api-query.html">主动查询</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/new-api-notify.html">异步通知</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -54,65 +54,41 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">异步通知</h1></header><article><div><span><p>接入方请提供此接口, 订单完成后, tradingchain将会通过这个接口通知接入方订单状态</p>
-<h1><a class="anchor" aria-hidden="true" id="request"></a><a href="#request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>request:</h1>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">异步通知</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="请求方式"></a><a href="#请求方式" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>请求方式</h2>
+<p>POST请求，Content-Type为application/json</p>
+<h2><a class="anchor" aria-hidden="true" id="请求字段"></a><a href="#请求字段" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>请求字段</h2>
 <table>
 <thead>
-<tr><th>参数名</th><th>参数类型</th><th>参数含义</th><th>是否签名</th><th>签名前是否加密(默认为否)</th></tr>
+<tr><th>字段</th><th>类型</th><th>示例</th><th>说明</th><th>是否签名</th></tr>
 </thead>
 <tbody>
-<tr><td>tradeNo</td><td>String</td><td>商户订单号</td><td>Y</td><td>-</td></tr>
-<tr><td>orderNo</td><td>String</td><td>平台订单号</td><td>Y</td><td>-</td></tr>
-<tr><td>amount</td><td>String</td><td>订单金额(原始下单金额)</td><td>Y</td><td>-</td></tr>
-<tr><td>origin</td><td>String</td><td>订单实际支付金额</td><td>N</td><td>该字段不参与签名</td></tr>
-<tr><td>quantity</td><td>String</td><td>usdt数量</td><td>Y</td><td>-</td></tr>
-<tr><td>offerOrderNo</td><td>String</td><td>币商挂单单号</td><td>Y</td><td>-</td></tr>
-<tr><td>type</td><td>String</td><td>交易类型, buy:买, sell:卖</td><td>Y</td><td>-</td></tr>
-<tr><td>userId</td><td>String</td><td>用户id</td><td>Y</td><td>-</td></tr>
-<tr><td>status</td><td>String</td><td>订单状态, 0:未付款, 1:待放币, 2:完成, 3:取消, 4:申述中</td><td>Y</td><td>-</td></tr>
-<tr><td>msg</td><td>String</td><td></td><td>Y</td><td>-</td></tr>
-<tr><td>operSysType</td><td>String</td><td>终端操作系统类型, &quot;ios&quot; 或 &quot;Android&quot;</td><td>Y</td><td>-</td></tr>
-<tr><td>rate</td><td>String</td><td>汇率, 钻石币对USDT</td><td>Y</td><td>-</td></tr>
-<tr><td>createTime</td><td>String</td><td>订单创建时间</td><td>Y</td><td>-</td></tr>
-<tr><td>endTime</td><td>String</td><td>订单结束时间</td><td>Y</td><td>-</td></tr>
-<tr><td>sign</td><td>String</td><td>签名(secret与下单时的相同)</td><td>-</td><td>-</td></tr>
+<tr><td>code</td><td>整型</td><td>100000</td><td>请求后台返回操作状态，100000为成功操作</td><td>否</td></tr>
+<tr><td>msg</td><td>字符串</td><td>&quot;OK&quot;</td><td>对code进行说明</td><td>是</td></tr>
+<tr><td>tradeNo</td><td>字符串</td><td>&quot;1245648978477&quot;</td><td>商户单号</td><td>是</td></tr>
+<tr><td>orderNo</td><td>字符串</td><td>&quot;998154152121156156&quot;</td><td>平台方单号</td><td>是</td></tr>
+<tr><td>paywayNo</td><td>字符串</td><td>&quot;payway2020021321475023&quot;</td><td>payway订单号</td><td>是</td></tr>
+<tr><td>amount</td><td>字符串</td><td>&quot;100&quot;</td><td>下单金额</td><td>是</td></tr>
+<tr><td>quantity</td><td>字符串</td><td>&quot;14.6842878&quot;</td><td>资产数量</td><td>是</td></tr>
+<tr><td>receiveType</td><td>字符串</td><td>&quot;UNIONPAY&quot;</td><td>付款方式(银行卡)</td><td>是</td></tr>
+<tr><td>userAccount</td><td>字符串</td><td>&quot;6228480234564561654&quot;</td><td>银行卡/支付宝/微信账号</td><td>是</td></tr>
+<tr><td>userName</td><td>字符串</td><td>&quot;张三&quot;</td><td>银行卡账户姓名</td><td>是</td></tr>
+<tr><td>userBankName</td><td>字符串</td><td>&quot;中国银行&quot;</td><td>银行卡名称</td><td>是</td></tr>
+<tr><td>status</td><td>字符串</td><td>&quot;完成&quot;</td><td>下单中,未付款,处理中,待退款,退款中,完成,失败</td><td>是</td></tr>
+<tr><td>merchantPayway</td><td>字符串</td><td>---</td><td>商户收/付款方式</td><td>是</td></tr>
+<tr><td>merchantAccountNo</td><td>字符串</td><td>---</td><td>商户方收付款账户</td><td>是</td></tr>
+<tr><td>merchantBankAccountName</td><td>字符串</td><td>---</td><td>商户方收付款账户昵称</td><td>是</td></tr>
+<tr><td>onlineUrl</td><td>字符串</td><td>http://**<em>.com?</em>?order=1324564</td><td>聊天链接,可以打开与商户一对一交流,完成订单</td><td>是</td></tr>
+<tr><td>timestamp</td><td>字符串</td><td>&quot;1578992354262&quot;</td><td>时间戳</td><td>是</td></tr>
+<tr><td>type</td><td>字符串</td><td>&quot;buy&quot;</td><td>订单方向buy(入金);sell(出金)</td><td>是</td></tr>
+<tr><td>sign</td><td>字符串</td><td>-</td><td>签名</td><td>否</td></tr>
 </tbody>
 </table>
-<p>请求示例</p>
-<pre><code class="hljs">js: $.post({
-    <span class="hljs-attr">url</span>: url,                     <span class="hljs-comment">// 接入方申请接入时提供的url, 或者下单时的payNotifyUrl参数, 优先使用payNotifyUrl参数</span>
-    <span class="hljs-attr">contentType</span>: <span class="hljs-string">'application/json; charset=UTF-8'</span>,
-    <span class="hljs-attr">data</span>: <span class="hljs-built_in">JSON</span>.stringify(data)    <span class="hljs-comment">// data如下</span>
-})
+<p><strong>注:</strong>
+当对接的是聊天模式，返回信息中onlineUrl有请求地址时,请打开本链接,直接弹出对话框,与商家一对一交流,完成此币订单</p>
+<h2><a class="anchor" aria-hidden="true" id="返回内容"></a><a href="#返回内容" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>返回内容</h2>
+<p>直接返回字符串</p>
+<p>OK</p>
+<h2><a class="anchor" aria-hidden="true" id="请求示例"></a><a href="#请求示例" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>请求示例</h2>
+<pre><code class="hljs css language-json">{<span class="hljs-attr">"amount"</span>:<span class="hljs-string">"1"</span>,<span class="hljs-attr">"code"</span>:<span class="hljs-number">100000</span>,<span class="hljs-attr">"merchantAccountNo"</span>:<span class="hljs-string">"62590588088888888"</span>,<span class="hljs-attr">"merchantBankAccountName"</span>:<span class="hljs-string">"测试"</span>,<span class="hljs-attr">"merchantPayway"</span>:<span class="hljs-string">"UNIONPAY"</span>,<span class="hljs-attr">"msg"</span>:<span class="hljs-string">""</span>,<span class="hljs-attr">"onlineUrl"</span>:<span class="hljs-string">"https://him.tcpay.xyz/chat.html?orderId=payway2020021321475023&amp;partnerNo=PAYWAY&amp;cipherText=sEAYzEhy8SH8RP61lIqQNpSsJB2C9sRMV2F+45kfo/pyjy9oTPdyKY7zt8IloLWXxxTLfA1oPUo9KuNhEtWlix2Lr5t99UeEH8iCgkoCdX9onOo/19p6Ensu01at4IyW&amp;signText=BxyrJ7SX0XghZhM5djOZUTyd9rhJYOWC924I7SuvXKyncRF90yrUjN/4L5dh2HfzXdCURV1AF6pBx20OYf3jvgYF/6YSEfc88XkeVdjqFPXzqB9M043ofVVjDWG0t0qsJ4Lc98AiiA2+sNw4Qm/4fv8HESs2+gfhLrAo7b0q1ug="</span>,<span class="hljs-attr">"orderNo"</span>:<span class="hljs-string">"1227952590491267073"</span>,<span class="hljs-attr">"paywayNo"</span>:<span class="hljs-string">"payway2020021321475023"</span>,<span class="hljs-attr">"quantity"</span>:<span class="hljs-string">"0.1174744"</span>,<span class="hljs-attr">"receiveType"</span>:<span class="hljs-string">"UNIONPAY"</span>,<span class="hljs-attr">"status"</span>:<span class="hljs-string">"未付款"</span>,<span class="hljs-attr">"timestamp"</span>:<span class="hljs-string">"1581601686613"</span>,<span class="hljs-attr">"tradeNo"</span>:<span class="hljs-string">"test-2020020302000010"</span>,<span class="hljs-attr">"type"</span>:<span class="hljs-string">"sell"</span>,<span class="hljs-attr">"userAccount"</span>:<span class="hljs-string">""</span>,<span class="hljs-attr">"userBankName"</span>:<span class="hljs-string">""</span>,<span class="hljs-attr">"userName"</span>:<span class="hljs-string">""</span>,<span class="hljs-attr">"sign"</span>:<span class="hljs-string">"****duehduaehduedguaedg2312hu123u1h3**"</span>}
 </code></pre>
-<p>data:</p>
-<pre><code class="hljs">{
-    <span class="hljs-attr">"tradeNo"</span>: <span class="hljs-string">"123123156"</span>,
-    <span class="hljs-attr">"orderNo"</span>: <span class="hljs-string">"1d45ea41d54415"</span>,
-    <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"20"</span>,
-    <span class="hljs-attr">"origin"</span>: <span class="hljs-string">"20.01"</span>,
-    <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"2.51"</span>,
-    <span class="hljs-attr">"offerOrderNo"</span>: <span class="hljs-string">"785841552"</span>,
-    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"sell"</span>,
-    <span class="hljs-attr">"userId"</span>: <span class="hljs-number">4</span>d51a4d415ae41d5,
-    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"2"</span>,
-    <span class="hljs-attr">"msg"</span>: ,
-    <span class="hljs-attr">"operSysType"</span>: <span class="hljs-string">"ios"</span>,
-    <span class="hljs-attr">"rate"</span>: <span class="hljs-string">"0.2"</span>,
-    <span class="hljs-attr">"createTime"</span>: <span class="hljs-string">""</span>,
-    <span class="hljs-attr">"endTime"</span>: <span class="hljs-string">""</span>
-    <span class="hljs-string">"sign"</span>: <span class="hljs-string">"1sd5a151sd51a5d1a4d1a45wdqa"</span>
-}
-</code></pre>
-<p>响应示例</p>
-<pre><code class="hljs">成功
-{
-    <span class="hljs-string">"status"</span>: <span class="hljs-string">"success"</span>
-}
-
-异常
-{
-    <span class="hljs-string">"status"</span>: <span class="hljs-string">"fail"</span>
-}
-</code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-query.html"><span class="arrow-prev">← </span><span>主动查询</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/4/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-query.html"><span class="arrow-prev">← </span><span>主动查询</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#请求方式">请求方式</a></li><li><a href="#请求字段">请求字段</a></li><li><a href="#返回内容">返回内容</a></li><li><a href="#请求示例">请求示例</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
