@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>主动查询 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="#### GET /diamond/html/query"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="主动查询 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="#### GET /diamond/html/query"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class="siteNavGroupActive"><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>订单状态</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-info.html">说明</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-in-1.html">模式1 - 标准入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-2.html">模式2 - H5入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-3.html">模式2 - 66号入金</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/old-api-query.html">主动查询</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">主动查询</h1></header><article><div><span><h4><a class="anchor" aria-hidden="true" id="get-diamondhtmlquery"></a><a href="#get-diamondhtmlquery" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GET /diamond/html/query</h4>
+<table>
+<thead>
+<tr><th>参数名</th><th>参数类型</th><th>示例值</th><th>参数含义</th><th>是否签名</th><th>签名前是否加密(默认为否)</th></tr>
+</thead>
+<tbody>
+<tr><td>tradeNo</td><td>String</td><td>no_1547108859849</td><td>接入方生成的订单号, 要确保唯一性</td><td>是</td></tr>
+<tr><td>apiKey</td><td>String</td><td>tradingchain</td><td>接入方申请的apiKey</td><td>是</td></tr>
+<tr><td>userId</td><td>String</td><td>接入方用户id</td><td>是</td></tr>
+<tr><td>operSysType</td><td>String</td><td>用户操作系统类型</td><td>安卓:Android, 苹果:ios</td><td>是</td></tr>
+<tr><td>timeStamp</td><td>String</td><td>1551854095352</td><td>13位时间戳</td><td>是</td></tr>
+<tr><td>sign</td><td>String</td><td>c34b649d7de35b2e516efcf298ae063a</td><td>签名值</td><td>-</td></tr>
+</tbody>
+</table>
+<p>请求示例</p>
+<pre><code class="hljs">GET http://192.168.124.154:8080/diamond/html/query?tradeNo=no_1552013313978<span class="hljs-variable">&amp;apiKey</span>=tradingchain<span class="hljs-variable">&amp;userId</span>=123456<span class="hljs-variable">&amp;operSysType</span>=Android<span class="hljs-variable">&amp;timeStamp</span>=1552013205012<span class="hljs-variable">&amp;&amp;sign</span>=c34b649d7de35b2e516efcf298ae063a 
+</code></pre>
+<p>响应示例</p>
+<pre><code class="hljs">{
+    <span class="hljs-attr">"resCode"</span>: <span class="hljs-string">"C502570000000"</span>,                   <span class="hljs-comment">// resCode为"C502570000000"表示请求处理成功</span>
+    <span class="hljs-attr">"resMsg"</span>: <span class="hljs-string">"ok"</span>,
+    <span class="hljs-attr">"orders"</span>: {
+        <span class="hljs-attr">"tradeNo"</span>: <span class="hljs-string">"no_1552013313978"</span>,              <span class="hljs-comment">// 订单的接入方单号</span>
+        <span class="hljs-attr">"orderNo"</span>: <span class="hljs-string">"99110190308104956000010"</span>,       <span class="hljs-comment">// 订单号</span>
+        <span class="hljs-attr">"offerOrderNo"</span>: <span class="hljs-string">"90005190305110234000157"</span>,  <span class="hljs-comment">// 对手单挂单号</span>
+        <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"100"</span>,                     <span class="hljs-comment">// 下单金额</span>
+                <span class="hljs-attr">"origin"</span>:<span class="hljs-string">"100.01"</span>,                                <span class="hljs-comment">// 实际支付金额</span>
+        <span class="hljs-attr">"createTime"</span>: <span class="hljs-string">"1552013391804"</span>,              <span class="hljs-comment">// 创建时间</span>
+        <span class="hljs-attr">"endTime"</span>: <span class="hljs-string">"1552013394625"</span>,                 <span class="hljs-comment">// 最后更新时间 </span>
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"buy"</span>,                              <span class="hljs-comment">// 类型</span>
+        <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"2.11"</span>,                         <span class="hljs-comment">// 资产数量</span>
+        <span class="hljs-attr">"operSysType"</span>: <span class="hljs-string">"Android"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"0"</span>,                               <span class="hljs-comment">// 状态 0:未付款, 1:待放币, 2:完成, 3:取消, 4:申诉中</span>
+                <span class="hljs-attr">"rate"</span>:<span class="hljs-string">"6.81"</span>                                <span class="hljs-comment">//CNY对应的USDT的币商挂单汇率</span>
+    }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/old-api-in-4.html"><span class="arrow-prev">← </span><span>Previous</span></a><a class="docs-next button" href="/docs/old-api-notify.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>

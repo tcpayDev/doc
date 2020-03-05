@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>模式2 - 66号入金 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## url: /diamond/html/buy_seventeen2.html"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="模式2 - 66号入金 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="## url: /diamond/html/buy_seventeen2.html"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class="siteNavGroupActive"><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>入金</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-info.html">说明</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-in-1.html">模式1 - 标准入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-2.html">模式2 - H5入金</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/old-api-in-3.html">模式2 - 66号入金</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-query.html">主动查询</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">模式2 - 66号入金</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="url-diamondhtmlbuy_seventeen2html"></a><a href="#url-diamondhtmlbuy_seventeen2html" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>url: /diamond/html/buy_seventeen2.html</h2>
+<h2><a class="anchor" aria-hidden="true" id="method-get"></a><a href="#method-get" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>method: GET</h2>
+<h2><a class="anchor" aria-hidden="true" id="request"></a><a href="#request" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>request:</h2>
+<table>
+<thead>
+<tr><th>参数名</th><th>参数类型</th><th>示例值</th><th>参数含义</th><th>是否签名</th></tr>
+</thead>
+<tbody>
+<tr><td>tradeNo</td><td>String</td><td>no_1547108859849</td><td>接入方生成的订单号, 请确保唯一性, 不能有特殊符号</td><td>是</td></tr>
+<tr><td>apiKey</td><td>String</td><td>tradingchain</td><td>接入方申请的apiKey</td><td>是</td></tr>
+<tr><td>type</td><td>String</td><td>buy</td><td>订单类型, 固定值buy</td><td>是</td></tr>
+<tr><td>amount</td><td>String</td><td>100</td><td>订单金额,单位:元</td><td>是</td></tr>
+<tr><td>userId</td><td>String</td><td>player_0001</td><td>接入方用户id</td><td>是</td></tr>
+<tr><td>operSysType</td><td>String</td><td>Android</td><td>用户手机系统类型, 可选的值[Android,ios]</td><td>是</td></tr>
+<tr><td>timeStamp</td><td>String</td><td>1551854095352</td><td>13位时间戳</td><td>是</td></tr>
+<tr><td>platform</td><td>String</td><td>tradingchain</td><td>固定值, 测试环境固定用tradingchain_test, 正式环境固定用tradingchain</td><td>是</td></tr>
+<tr><td>payNotifyUrl</td><td>String</td><td><a href="http://example.com/notify">http://example.com/notify</a></td><td>接入方的支付通知地址, 在url encode操作之前签名</td><td>是</td></tr>
+<tr><td>bcMerchantPublicKey</td><td>String</td><td>GCNPSEFPRJNYVC5EZUGXWEQRBZMT<br>EGXDZB2WVJ2FGIIZYJSSWYYAMEFU</td><td>请务必填写你申请的USDT接收账户</td><td>是</td></tr>
+<tr><td>paymentTypes</td><td>String</td><td>alipay(支付宝)/bank(银行卡)/wepay(微信) 三个参数,在确定有挂单的情况下,选择</td><td>请调用获取挂单接口查询是否存在对应的挂单</td><td>否</td></tr>
+<tr><td>attribute1</td><td>String</td><td>paymentTypes如果是支付宝,请填写:支付宝账户;paymentTypes如果是银行卡,请填写:银行卡姓名;paymentTypes如果是微信,请填写微信账户</td><td>对应支付方式请对应备注</td><td>否</td></tr>
+<tr><td>pricePrint</td><td>Boolean</td><td>该笔订单是否使用价格指纹</td><td>true 或者 false, 不要使用双引号</td><td>否</td></tr>
+<tr><td>modeType</td><td>String</td><td>固定值:&quot;66&quot;</td><td>模式标识固定值</td><td>否</td></tr>
+</tbody>
+</table>
+<p>|sign |String |c34b649d7de35b2e516efcf298ae063a |签名值, 大小写不敏感 | - |</p>
+<p>`
+请在拼好请求url后用浏览器打开此url, 因为返回的是网页</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/old-api-in-2.html"><span class="arrow-prev">← </span><span>模式2 - H5入金</span></a><a class="docs-next button" href="/docs/old-api-in-4.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#url-diamondhtmlbuy_seventeen2html">url: /diamond/html/buy_seventeen2.html</a></li><li><a href="#method-get">method: GET</a></li><li><a href="#request">request:</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>

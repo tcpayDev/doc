@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>模式1 - 标准入金 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="### 背景说明"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="模式1 - 标准入金 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="### 背景说明"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">新版本API</a></li><li class="siteNavGroupActive"><a href="/docs/old-api-info.html" target="_self">老版本API(即将废弃)</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>入金</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-info.html">说明</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/old-api-in-1.html">模式1 - 标准入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-2.html">模式2 - H5入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-3.html">模式2 - 66号入金</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-query.html">主动查询</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">模式1 - 标准入金</h1></header><article><div><span><h3><a class="anchor" aria-hidden="true" id="背景说明"></a><a href="#背景说明" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>背景说明</h3>
+<p>原来下单过程是把所有请求参数拼成一个url, 直接在浏览器里打开完成的
+假如有tradeNo(单号), amount(金额).. 等参数, 并且假如下单服务器地址是 ( <a href="http://api.tcpay.info/create">http://api.tcpay.info/create</a> ) 的话,
+则拼接出 ( <a href="http://api.tcpay.info/create?tradeNo=xxx&amp;amount=100&amp;">http://api.tcpay.info/create?tradeNo=xxx&amp;amount=100&amp;</a> ) 这样的请求链接
+请求过程直接是 玩家--&gt; 接入方app--&gt; 下单服务器
+原接入方接口文档链接地址在此: ( <a href="https://github.com/Tradingchain/diamond-easy-mode/wiki">https://github.com/Tradingchain/diamond-easy-mode/wiki</a> )</p>
+<p>而现在要做的是, 将请求过程调整为 玩家--&gt; 接入方app--&gt; 合作方服务器--&gt; 下单服务器
+因此封装了供合作方服务器调用的下单接口, 接口文档和请求返回示例如下</p>
+<h3><a class="anchor" aria-hidden="true" id="参数说明"></a><a href="#参数说明" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参数说明</h3>
+<p>请求参数</p>
+<p>| 参数名 | 类型 | 必传 | 说明 | 是否要签名 | 长度 |
+| - | - | - | - | - | - | -|
+| tradeNo | String | Y | 接入方单号（不能是特殊字符以及空格，不能是中文） | Y | &lt;=32 |
+| apiKey | String | Y | 接入方apiKey | Y | |
+| bcMerchantPublicKey | String | Y | BC商户的公钥(即扑满注册账户,公钥是大写'G'开头) | Y |56 |
+| type | String | Y | 买卖方向（固定buy） | Y | |
+| platform | String | Y | 测试环境固定tradingchain_test，正式环境固定tradingchain | Y | |
+| timeStamp | String | Y | 13位时间戳(固定13位数字) | Y |13 |
+| operSysType | String | Y | 用户终端操作系统类型（固定ios） | Y | |
+| amount | String | Y | 下单金额 | Y | |
+| userId | String | Y | 接入方用户id,保证唯一（推荐数字、字母或在组合使用） | Y | &lt;=32 |
+| payNotifyUrl | String | Y | 接入方回调通知地址 | Y |  |
+| payType| String | Y | 期望的支付方式, 可选值有[&quot;alipay&quot;, &quot;wepay&quot;, &quot;bank&quot;] | N | | |
+| comment| String | Y | 订单备注(payType为:bank,则写付款人姓名,payType为:alipay或wepay,则写付款人支付宝账号或者付款人微信账号),如果不正确填写可能不会到账 | N |  |
+| sign | String | Y | 接入方签名 | N | 小写 | |
+| modeType| String | N | 原来用于标识支付接口序号的参数 | N |  |
+| redComment| String | N | 红龙家使用到的参数 | N |  |
+| pricePrint| Boolean | N | 该笔订单是否使用价格指纹 | N | true 或者 false, 不要使用双引号 | |
+| version | String | Y | 请使用固定值 &quot;0.0.1&quot;, 接口变动时可能会变化 | N | 合作方追加的参数 | |</p>
+<hr>
+<p>响应参数</p>
+<p>| 参数名 | 类型 | 说明 | - |
+| - | - | - | - | - | - |
+| version | String | 针对当前文档为固定值 &quot;0.0.1&quot;, 接口变动时可能会变化 |
+| tradeNo | String | 商户单号
+| orderNo | String | otc单号
+| amount | String | 下单金额
+| type | String | 买卖方向, 入金时为 &quot;buy&quot;
+| quantity | String | usdt数量
+| apiKey | String | apiKey
+| platform | String | platform
+| status | String | 订单状态
+| amountCNY | String | 玩家实际支付金额
+| payNotifyUrl | String | 接入方的回调接口地址
+| userReceiveType | String | 玩家收款方式(出金时)
+| userReceiveName | String | 玩家收款真名(出金时)
+| userReceiveAccount | String | 玩家收款账号(出金时)
+| otcMerchantId | String | otc币商id
+| otcMerchantName | String | otc币商名
+| otcMerchantNickName | String | otc币商昵称
+| otcMerchantPublicKey | String | otc币商公钥
+| otcReceiveType | String | otc收款方式
+| otcReceiveName | String | otc收款真名
+| otcReceiveAccount | String | otc收款账号
+| otcReceiveBankAddr | String | otc收款银行(如果收款方式为银行卡)
+| otcReceiveQrUrl | String | otc收款二维码
+| otcPrice | String | 挂单价格
+| otcOfferOrderNo | String | 挂单单号</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="请求示例-支持json请求和表单请求"></a><a href="#请求示例-支持json请求和表单请求" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>请求示例 支持json请求和表单请求</h3>
+<p>请求示例 (application/json)</p>
+<p>请求方法
+POST</p>
+<p>请求头
+Accept: application/json
+Content-Type: application/json</p>
+<p>请求体</p>
+<pre><code class="hljs">{
+    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+    <span class="hljs-attr">"tradeNo"</span>: <span class="hljs-string">"no_buy_1565675439354"</span>,
+    <span class="hljs-attr">"apiKey"</span>: <span class="hljs-string">"tradingchain"</span>,
+    <span class="hljs-attr">"bcMerchantPublicKey"</span>: <span class="hljs-string">"GBVLUFDXDDYPQCKPKRIV36ELS2JT2MBAIB4OUOZW5CYYETOULRM44BH7"</span>,
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"buy"</span>,
+    <span class="hljs-attr">"platform"</span>: <span class="hljs-string">"tradingchain"</span>,
+    <span class="hljs-attr">"timeStamp"</span>: <span class="hljs-string">"1547088024000"</span>,
+    <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"0.02"</span>,
+    <span class="hljs-attr">"operSysType"</span>: <span class="hljs-string">"Android"</span>,
+    <span class="hljs-attr">"userId"</span>: <span class="hljs-string">"tradingchain_test_1111"</span>,
+    <span class="hljs-attr">"payNotifyUrl"</span>: <span class="hljs-string">"https://example.com/callback/"</span>,
+    <span class="hljs-attr">"pricePrint"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"sign"</span>: <span class="hljs-string">"0062FD313028C4DE1B553448C1A23CB4"</span>
+}
+</code></pre>
+<p>请求示例 (form表单)
+请求方法
+POST</p>
+<p>请求头
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded</p>
+<p>请求体
+略</p>
+<hr>
+<h3><a class="anchor" aria-hidden="true" id="响应示例-响应体格式为-applicationjsoncharsetutf-8"></a><a href="#响应示例-响应体格式为-applicationjsoncharsetutf-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>响应示例 响应体格式为 application/json;charset=UTF-8</h3>
+<p>说明:
+只有当 code 等于 200 且 msg 等于 OK 时为成功处理流程, 可以正确继续, 其余情况为出错流程, data 为 null, msg 应当包含关键的出错信息</p>
+<p>响应头
+Content-Type: application/json;charset=UTF-8</p>
+<p>响应体</p>
+<pre><code class="hljs">{
+    <span class="hljs-attr">"code"</span>: <span class="hljs-number">200</span>,
+    <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"OK"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+        <span class="hljs-attr">"tradeNo"</span>: <span class="hljs-string">"no_buy_1565675439354"</span>,
+        <span class="hljs-attr">"orderNo"</span>: <span class="hljs-string">"99110190813092213000867"</span>,
+        <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"0.02"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"buy"</span>,
+        <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"0.0014684"</span>,
+        <span class="hljs-attr">"apiKey"</span>: <span class="hljs-string">"tradingchain"</span>,
+        <span class="hljs-attr">"platform"</span>: <span class="hljs-string">"tradingchain"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"未付款"</span>,
+        <span class="hljs-attr">"amountCNY"</span>: <span class="hljs-string">"0.01"</span>,
+        <span class="hljs-attr">"payNotifyUrl"</span>: <span class="hljs-string">"https://example.com/callback/"</span>,
+        <span class="hljs-attr">"userReceiveType"</span>: <span class="hljs-string">"alipay"</span>,
+        <span class="hljs-attr">"userReceiveName"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"userReceiveAccount"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"otcMerchantId"</span>: <span class="hljs-string">"5f6428e4c1414bda9b79a57e1ec6defc"</span>,
+        <span class="hljs-attr">"otcMerchantName"</span>: <span class="hljs-string">"测试蟑螂恶霸"</span>,
+        <span class="hljs-attr">"otcMerchantNickName"</span>: <span class="hljs-string">"CY团蟑螂恶霸大哥"</span>,
+        <span class="hljs-attr">"otcMerchantPublicKey"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"otcReceiveType"</span>: <span class="hljs-string">"alipay"</span>,
+        <span class="hljs-attr">"otcReceiveName"</span>: <span class="hljs-string">"测试蟑螂恶霸"</span>,
+        <span class="hljs-attr">"otcReceiveAccount"</span>: <span class="hljs-string">"12345678912"</span>,
+        <span class="hljs-attr">"otcReceiveBankAddr"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"otcReceiveQrUrl"</span>: <span class="hljs-string">"http://scloudpay-oc2.oss-ap-southeast-1.aliyuncs.com/exchange/scloudpay-exchange-otc-user/1562562354506_qr_code.jpg?Expires=1877922355&amp;OSSAccessKeyId=LTAIaOl7K6geXshl&amp;Signature=oA7OWV5hiIXOllku3UJ1UoXQF9M%3D-small"</span>,
+        <span class="hljs-attr">"otcPrice"</span>: <span class="hljs-string">"6.81"</span>,
+        <span class="hljs-attr">"otcOfferOrderNo"</span>: <span class="hljs-string">"90005190715030604001423"</span>
+    }
+}
+</code></pre>
+<p>响应体 (2 支付方式为 bank)</p>
+<pre><code class="hljs">{
+    <span class="hljs-attr">"code"</span>: <span class="hljs-number">200</span>,
+    <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"OK"</span>,
+    <span class="hljs-attr">"data"</span>: {
+        <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.0.1"</span>,
+        <span class="hljs-attr">"tradeNo"</span>: <span class="hljs-string">"no_buy_1565675439354"</span>,
+        <span class="hljs-attr">"orderNo"</span>: <span class="hljs-string">"99110190813093752000910"</span>,
+        <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"0.02"</span>,
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"buy"</span>,
+        <span class="hljs-attr">"quantity"</span>: <span class="hljs-string">"0.0014684"</span>,
+        <span class="hljs-attr">"apiKey"</span>: <span class="hljs-string">"tradingchain"</span>,
+        <span class="hljs-attr">"platform"</span>: <span class="hljs-string">"tradingchain"</span>,
+        <span class="hljs-attr">"status"</span>: <span class="hljs-string">"未付款"</span>,
+        <span class="hljs-attr">"amountCNY"</span>: <span class="hljs-string">"0.01"</span>,
+        <span class="hljs-attr">"payNotifyUrl"</span>: <span class="hljs-string">"https://example.com/callback/"</span>,
+        <span class="hljs-attr">"userReceiveType"</span>: <span class="hljs-string">"bank"</span>,
+        <span class="hljs-attr">"userReceiveName"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"userReceiveAccount"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"otcMerchantId"</span>: <span class="hljs-string">"77b13bc15f7245fda777c2e6f2d233c1"</span>,
+        <span class="hljs-attr">"otcMerchantName"</span>: <span class="hljs-string">"币商名"</span>,
+        <span class="hljs-attr">"otcMerchantNickName"</span>: <span class="hljs-string">"币商名"</span>,
+        <span class="hljs-attr">"otcMerchantPublicKey"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"otcReceiveType"</span>: <span class="hljs-string">"bank"</span>,
+        <span class="hljs-attr">"otcReceiveName"</span>: <span class="hljs-string">"真名"</span>,
+        <span class="hljs-attr">"otcReceiveAccount"</span>: <span class="hljs-string">"6214xxxxxxxxxxxx"</span>,
+        <span class="hljs-attr">"otcReceiveBankAddr"</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">"otcReceiveQrUrl"</span>: <span class="hljs-string">"null-small"</span>,
+        <span class="hljs-attr">"otcPrice"</span>: <span class="hljs-string">"6.81"</span>,
+        <span class="hljs-attr">"otcOfferOrderNo"</span>: <span class="hljs-string">"90005190813064654001787"</span>
+    }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/old-api-info.html"><span class="arrow-prev">← </span><span>说明</span></a><a class="docs-next button" href="/docs/old-api-in-2.html"><span>模式2 - H5入金</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
