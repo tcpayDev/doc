@@ -67,7 +67,7 @@
 <tr><td>apiKey</td><td>字符串</td><td>-</td><td>&quot;tc&quot;</td><td>否</td><td>商务后台创建的apiKey(亲联系您的上级代理,获取该标识,以及对应的签名key)</td><td>是</td></tr>
 <tr><td>tradeNo</td><td>字符串</td><td>16-32</td><td>&quot;12345678&quot;</td><td>否</td><td>商户单号(16-32位,任意字符)</td><td>是</td></tr>
 <tr><td>amount</td><td>字符串</td><td>-</td><td>&quot;100&quot;</td><td>否</td><td>交易金额(单位:元),不能小于等于0</td><td>是</td></tr>
-<tr><td>receiveType</td><td>字符串</td><td>-</td><td>&quot;UNIONPAY&quot;</td><td>否</td><td>银行卡支付：UNIONPAY;支付宝：ALIPAY;微信：WEPAY</td><td>是</td></tr>
+<tr><td>receiveType</td><td>字符串</td><td>-</td><td>&quot;UNIONPAY&quot;</td><td>否</td><td>银行卡支付：UNIONPAY;支付宝：ALIPAY</td><td>是</td></tr>
 <tr><td>payNotifyUrl</td><td>字符串</td><td>-</td><td>&quot;1&quot;</td><td>否</td><td>异步通知url,该url请不要携带特殊符号,请正常填写如&quot;http://****/order/notify&quot;</td><td>是</td></tr>
 <tr><td>userAccount</td><td>字符串</td><td>-</td><td>&quot;622848****5314&quot;</td><td>否</td><td>收付款时的账户</td><td>是</td></tr>
 <tr><td>username</td><td>字符串</td><td>-</td><td>&quot;张三&quot;</td><td>是</td><td>当receiveType为&quot;UNIONPAY&quot;是,该字段必传,且与银行卡开户人姓名相同</td><td>是(必传需签名)</td></tr>
@@ -75,6 +75,12 @@
 <tr><td>sign</td><td>字符串</td><td>-</td><td>&quot;1&quot;</td><td>否</td><td>签名</td><td>否</td></tr>
 </tbody>
 </table>
+<p><strong>注:</strong>
+请求参数中，&quot;receiveType&quot;字段填写规则：
+支付宝转支付宝：填写&quot;ALIPAY&quot;
+支付宝转银行卡：填写&quot;UNIONPAY&quot;
+银行卡转银行卡：填写&quot;UNIONPAY&quot;</p>
+<p>若填写错误，可能造成下单失败。</p>
 <h2><a class="anchor" aria-hidden="true" id="返回内容"></a><a href="#返回内容" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>返回内容</h2>
 <table>
 <thead>
@@ -137,4 +143,4 @@
     <span class="hljs-attr">"userName"</span>: <span class="hljs-string">"test0001"</span>
 }
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/4/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-in-3.html"><span class="arrow-prev">← </span><span>模式3 - H5页面下单</span></a><a class="docs-next button" href="/docs/new-api-out-1.html"><span>模式1 - 聊天+自动分配币商</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#请求方式">请求方式</a></li><li><a href="#请求url">请求URL</a></li><li><a href="#请求字段">请求字段</a></li><li><a href="#返回内容">返回内容</a></li><li><a href="#请求示例：">请求示例：</a></li><li><a href="#返回示例：">返回示例：</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/3/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-in-3.html"><span class="arrow-prev">← </span><span>模式3 - H5页面下单</span></a><a class="docs-next button" href="/docs/new-api-out-1.html"><span>模式1 - 聊天+自动分配币商</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#请求方式">请求方式</a></li><li><a href="#请求url">请求URL</a></li><li><a href="#请求字段">请求字段</a></li><li><a href="#返回内容">返回内容</a></li><li><a href="#请求示例：">请求示例：</a></li><li><a href="#返回示例：">返回示例：</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
