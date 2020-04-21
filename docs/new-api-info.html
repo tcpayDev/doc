@@ -56,11 +56,17 @@
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">说明</h1></header><article><div><span><p>##⚠</p>
 <p>本次文档跟新一下内容：</p>
-<p>1、入金-模式4接口新增返回字段&quot;merchantBankName&quot;；</p>
-<p>2、出金-模式3接口新增返回字段&quot;merchantBankName&quot;；</p>
-<p>3、异步通知新增返回字段&quot;merchantBankName&quot;，该字段参与签名；</p>
-<p>4、查询接口新增返回字段&quot;merchantBankName&quot;；</p>
+<p>文档跟新时间：2020-04-21</p>
+<p>1、入金-模式4接口新增返回字段&quot;merchantName&quot; 和 &quot;remarks&quot;；</p>
+<p>2、出金-模式3接口新增返回字段&quot;merchantName&quot; 和 &quot;remarks&quot;；</p>
+<p>3、异步通知新增返回字段&quot;merchantName&quot; 和 &quot;remarks&quot;，两个字段参与签名；</p>
+<p>4、查询接口新增返回字段&quot;merchantName&quot; 和 &quot;remarks&quot;；</p>
 <h2><a class="anchor" aria-hidden="true" id="准备工作"></a><a href="#准备工作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>准备工作</h2>
+<p>测试环境：</p>
+<p>1、<em>apikey</em>与<em>apisecret</em>找瓜瓜TeleGram好友，手机号：852 6844 3616，姓名：瓜瓜</p>
+<p>2、除<em>apikey</em>、<em>apisecret</em>以外请求参数与生产环境一致</p>
+<p>3、测试环境商户创建好后，会预存1000个USDT供测试使用</p>
+<p>4、测试环境测试订单入金，出金都是100起。</p>
 <p>您已经拿到了<em>apiKey</em>和<em>apiSecret</em></p>
 <h2><a class="anchor" aria-hidden="true" id="订单状态更新"></a><a href="#订单状态更新" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>订单状态更新</h2>
 <p>本系统提供了异步通知和主动查询两个接口。异步通知会主动向您发起订单通知，只有服务器超时和返回500号以上的错误才重发，
@@ -76,7 +82,8 @@
 </ol></li>
 </ol>
 <h2><a class="anchor" aria-hidden="true" id="接口地址"></a><a href="#接口地址" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>接口地址</h2>
-<p><a href="https://payway.tcpay.info/">https://payway.tcpay.info/</a></p>
+<p>测试环境：<a href="http://test.tcpay.info/payway">http://test.tcpay.info/payway</a></p>
+<p>生产环境：<a href="https://payway.tcpay.info/">https://payway.tcpay.info/</a></p>
 <h2><a class="anchor" aria-hidden="true" id="异步通知服务器地址"></a><a href="#异步通知服务器地址" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>异步通知服务器地址</h2>
 <p>如果接入方有ip白名单限制，请加入异步通知服务器的ip地址。</p>
 <ul>
@@ -111,4 +118,4 @@
 <p><code>&quot;id=userId&amp;username=username&amp;abcdefg&quot;</code></p>
 <h6><a class="anchor" aria-hidden="true" id="进行sha256加密"></a><a href="#进行sha256加密" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>进行SHA256加密</h6>
 <p><code>&quot;309403f3d530eaad5f716e88539fb7fea94b954643cd9bdb078938c27602e6ea&quot;</code></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/15/2020</em></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/new-api-error-code.html"><span>返回码</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#准备工作">准备工作</a></li><li><a href="#订单状态更新">订单状态更新</a><ul class="toc-headings"><li><a href="#最佳实践">最佳实践</a></li></ul></li><li><a href="#接口地址">接口地址</a></li><li><a href="#异步通知服务器地址">异步通知服务器地址</a></li><li><a href="#签名算法">签名算法</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/21/2020</em></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/new-api-error-code.html"><span>返回码</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#准备工作">准备工作</a></li><li><a href="#订单状态更新">订单状态更新</a><ul class="toc-headings"><li><a href="#最佳实践">最佳实践</a></li></ul></li><li><a href="#接口地址">接口地址</a></li><li><a href="#异步通知服务器地址">异步通知服务器地址</a></li><li><a href="#签名算法">签名算法</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
