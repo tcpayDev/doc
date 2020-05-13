@@ -83,6 +83,33 @@
 <tr><td>orders</td><td>--</td><td>--</td><td>请参考返回事例</td></tr>
 </tbody>
 </table>
+<h2><a class="anchor" aria-hidden="true" id="orders返回内容"></a><a href="#orders返回内容" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>orders返回内容</h2>
+<table>
+<thead>
+<tr><th>字段</th><th>类型</th><th>示例</th><th>说明</th></tr>
+</thead>
+<tbody>
+<tr><td>code</td><td>整型</td><td>100000</td><td>100000标示为订单存在，且正常返回，500006则表示订单不存在，200001表示查询条数超过50，200002表示查询订单系统异常</td></tr>
+<tr><td>msg</td><td>字符串</td><td>&quot;OK&quot;</td><td>对code进行说明</td></tr>
+<tr><td>tradeNo</td><td>字符串</td><td>&quot;1245648978477&quot;</td><td>商户单号</td></tr>
+<tr><td>orderNo</td><td>字符串</td><td>&quot;998154152121156156&quot;</td><td>otc订单号</td></tr>
+<tr><td>paywayNo</td><td>字符串</td><td>&quot;payway2020021321475023&quot;</td><td>payway订单号</td></tr>
+<tr><td>amount</td><td>字符串</td><td>&quot;100&quot;</td><td>下单金额</td></tr>
+<tr><td>quantity</td><td>字符串</td><td>&quot;14.6842878&quot;</td><td>资产数量</td></tr>
+<tr><td>receiveType</td><td>字符串</td><td>&quot;UNIONPAY&quot;</td><td>付款方式(银行卡)</td></tr>
+<tr><td>userAccount</td><td>字符串</td><td>&quot;6228480234564561654&quot;</td><td>银行卡/支付宝/微信账号</td></tr>
+<tr><td>userName</td><td>字符串</td><td>&quot;张三&quot;</td><td>银行卡账户姓名</td></tr>
+<tr><td>userBankName</td><td>字符串</td><td>&quot;中国银行&quot;</td><td>银行卡名称</td></tr>
+<tr><td>status</td><td>字符串</td><td>&quot;完成&quot;</td><td>下单中,未付款,处理中,待退款,退款中,完成,失败</td></tr>
+<tr><td>merchantPayway</td><td>字符串</td><td>---</td><td>平台方收/付款方式</td></tr>
+<tr><td>merchantAccountNo</td><td>字符串</td><td>---</td><td>平台方收付款账户</td></tr>
+<tr><td>merchantBankAccountName</td><td>字符串</td><td>---</td><td>平台方收付款账户昵称</td></tr>
+<tr><td>merchantBankName</td><td>字符串</td><td>---</td><td>平台方银行卡名称</td></tr>
+<tr><td>onlineUrl</td><td>字符串</td><td>http://**<em>.com?</em>?order=1324564</td><td>聊天链接,可以打开与商户一对一交流,完成订单</td></tr>
+<tr><td>finishedTime</td><td>整型</td><td>1578992354262</td><td>订单完成时间,默认值为0</td></tr>
+<tr><td>sign</td><td>字符串</td><td>-</td><td>签名</td></tr>
+</tbody>
+</table>
 <p><strong>注:</strong>
 当对接的是聊天模式，则返回信息中onlineUrl有请求地址时,请打开本链接,直接弹出对话框,与商家一对一交流,完成此币订单；</p>
 <p>该接口查询频率：1分钟/10次</p>
@@ -174,4 +201,4 @@
     ]
 }
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/13/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-query.html"><span class="arrow-prev">← </span><span>主动-查询</span></a><a class="docs-next button" href="/docs/new-api-notify.html"><span>异步通知</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#请求方式">请求方式</a></li><li><a href="#请求url">请求URL</a></li><li><a href="#请求参数">请求参数</a></li><li><a href="#注">注</a></li><li><a href="#返回内容">返回内容</a></li><li><a href="#请求示例：">请求示例：</a></li><li><a href="#返回示例：">返回示例：</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 5/13/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/new-api-query.html"><span class="arrow-prev">← </span><span>主动-查询</span></a><a class="docs-next button" href="/docs/new-api-notify.html"><span>异步通知</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#请求方式">请求方式</a></li><li><a href="#请求url">请求URL</a></li><li><a href="#请求参数">请求参数</a></li><li><a href="#注">注</a></li><li><a href="#返回内容">返回内容</a></li><li><a href="#orders返回内容">orders返回内容</a></li><li><a href="#请求示例：">请求示例：</a></li><li><a href="#返回示例：">返回示例：</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
