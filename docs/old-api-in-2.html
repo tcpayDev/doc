@@ -1,60 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>模式2 - H5入金 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="|参数名 |参数类型 |示例值 |参数含义 | 是否签名 | |"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="模式2 - H5入金 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="|参数名 |参数类型 |示例值 |参数含义 | 是否签名 | |"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">API接口文档</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>入金</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">通用</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-info.html">说明</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">入金</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-in-1.html">模式1 - 标准入金</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/old-api-in-2.html">模式2 - H5入金</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-in-3.html">模式3 - 66号入金</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">订单状态</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-query.html">主动查询</a></li><li class="navListItem"><a class="navItem" href="/docs/old-api-notify.html">异步通知</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">其他</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/old-api-balance.html">账户资产查询</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
-
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">模式2 - H5入金</h1></header><article><div><span><table>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>模式2 - H5入金 · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="|参数名 |参数类型 |示例值 |参数含义 | 是否签名 | |"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="模式2 - H5入金 · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://www.tcpay.info/index.html"/><meta property="og:description" content="|参数名 |参数类型 |示例值 |参数含义 | 是否签名 | |"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">API接口文档</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">模式2 - H5入金</h1></header><article><div><span><table>
 <thead>
 <tr><th>参数名</th><th>参数类型</th><th>示例值</th><th>参数含义</th><th>是否签名</th><th></th></tr>
 </thead>
@@ -81,4 +25,4 @@
 <pre><code class="hljs"><span class="hljs-number">21</span>号-当前主推            http:<span class="hljs-comment">//api.tcpay.info/diamond/html/buy_opt.html</span>
 </code></pre>
 <p>不同接入地址对应不同模式, 如果想免除模式切换的麻烦, 请使用21号当前主推模式</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/old-api-in-1.html"><span class="arrow-prev">← </span><span>模式1 - 标准入金</span></a><a class="docs-next button" href="/docs/old-api-in-3.html"><span>模式3 - 66号入金</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/5/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
