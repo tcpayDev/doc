@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Return code · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="|return code|content|"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Return code · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.tcpays.xyz/index.html"/><meta property="og:description" content="|return code|content|"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">API接口文档</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Return code</h1></header><article><div><span><table>
+<thead>
+<tr><th>return code</th><th>content</th></tr>
+</thead>
+<tbody>
+<tr><td>100000</td><td>OK</td></tr>
+<tr><td>200001</td><td>The maximum number of queries is 50</td></tr>
+<tr><td>200002</td><td>Query order exception</td></tr>
+<tr><td>300001</td><td>Authorization failed</td></tr>
+<tr><td>300003</td><td>Abnormal withdrawal balance</td></tr>
+<tr><td>300004</td><td>Registration failed</td></tr>
+<tr><td>400001</td><td>Parameter error</td></tr>
+<tr><td>400004</td><td>Parameter cannot be empty</td></tr>
+<tr><td>500002</td><td>Order failed</td></tr>
+<tr><td>500003</td><td>The order number is repeated</td></tr>
+<tr><td>500004</td><td>apiKey does not exist or is wrong</td></tr>
+<tr><td>500005</td><td>Signature error</td></tr>
+<tr><td>500006</td><td>The order does not exist</td></tr>
+<tr><td>500007</td><td>No pending order with matching amount</td></tr>
+<tr><td>500008</td><td>The order amount is too low</td></tr>
+<tr><td>500009</td><td>Do not repeat orders</td></tr>
+<tr><td>500010</td><td>Merchant has suspended trading</td></tr>
+<tr><td>500011</td><td>Orders are placed too frequently</td></tr>
+<tr><td>600001</td><td>Authorization timeout</td></tr>
+<tr><td>600002</td><td>Failed to add payment method</td></tr>
+<tr><td>600003</td><td>Failed to obtain payment method</td></tr>
+<tr><td>600004</td><td>Failed to delete payment method</td></tr>
+<tr><td>600005</td><td>Please add the payment method</td></tr>
+<tr><td>700001</td><td>Inquiry requests are too frequent</td></tr>
+<tr><td>700002</td><td>Save order optimistic lock error</td></tr>
+<tr><td>700003</td><td>Repeat order</td></tr>
+<tr><td>700033</td><td>This transfer was not found</td></tr>
+<tr><td>900000</td><td>Decryption error</td></tr>
+<tr><td>900001</td><td>Convert Proto exception</td></tr>
+<tr><td>900002</td><td>Encryption error</td></tr>
+<tr><td>900003</td><td>Limited access</td></tr>
+<tr><td>900004</td><td>Request system IO exception</td></tr>
+<tr><td>900005</td><td>Unknown error</td></tr>
+<tr><td>900006</td><td>System abnormality</td></tr>
+<tr><td>900007</td><td>Service is busy, please try later</td></tr>
+</tbody>
+</table>
+<p>####Status</p>
+<ul>
+<li>下单中=PlacingAnOrder</li>
+<li>未付款=Unpaid</li>
+<li>处理中=Processing</li>
+<li>待退款=PendingRefund</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/15/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>

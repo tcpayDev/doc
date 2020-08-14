@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>info · TC支付</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="##Before to go"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="info · TC支付"/><meta property="og:type" content="website"/><meta property="og:url" content="http://docs.tcpays.xyz/index.html"/><meta property="og:description" content="##Before to go"/><meta name="twitter:card" content="summary"/><meta name="robots" content="noindex"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">TC支付</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/new-api-info.html" target="_self">API接口文档</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">info</h1></header><article><div><span><p>##Before to go
+Test environment：
+1、<em>apikey</em> and <em>apisecret</em> find瓜瓜and add TeleGram friend，phone number：852 6844 3616，Name：瓜瓜</p>
+<p>2、Except for <em>apikey</em> and <em>apiscert</em>, the request parameters are consistent with the formal environment</p>
+<p>3、After the test environment merchant is created, 1,000 USDT will be pre-stored for testing</p>
+<p>4、The test environment test orders are all from 100.</p>
+<p>You already get apiKey and apiSecret</p>
+<p>##Order status update
+Our system provides two interfaces, pay notification and query. Pay notification will actively initiate order notifications to you. Only the server times out and return error code:500 will be resent. Other returns will not send notifications repeatedly.</p>
+<p>To avoid not accepting pay notification, strongly recommended that you access the query interface.</p>
+<ol>
+<li>Access pay notification.</li>
+<li>Use the timing task to access the query interface.
+<ol>
+<li>Query frequency suggestion：<em>1min/10times</em>.</li>
+<li>Query content suggestion：<em>unfilled orders placed 10 mins ago</em>.</li>
+</ol></li>
+</ol>
+<p>##Interface address
+Ask 瓜瓜，he will give you.</p>
+<p>##Pay notification server address
+If the accessor has ip whitelist restricitions, please add the ip address of pay notification server.</p>
+<p>•   13.231.170.106</p>
+<p>##Signature algorithm</p>
+<ol>
+<li><p>Sort the request parameters(excluding the sign parameter) according to the Ascii code sequence and splice them into string(during the splicing process, null values “”(empty) values and values that are not in string format are not required to be signed)</p></li>
+<li><p>Splice the apiSecret at the end</p></li>
+<li><p>Sha256 encrypt the concatenated string and convert to lower case.</p></li>
+</ol>
+<p>#####Example
+######Need to request parameters and get <em>apiSecret</em>
+<code>apiSecret=&quot;abcdefg&quot;</code></p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"timestamp"</span>: <span class="hljs-number">1583308458233</span>,
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"userId"</span>,
+  <span class="hljs-attr">"username"</span>: <span class="hljs-string">"username"</span>,
+  <span class="hljs-attr">"nickname"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">"age"</span>: <span class="hljs-string">""</span>
+}
+</code></pre>
+<p>######Splice request parameters
+<code>&quot;id=userId&amp;username=username&quot;</code></p>
+<p><strong>Be care:</strong></p>
+<ul>
+<li>age is empty string，so don’t sign it.</li>
+<li>nickname value is null，so don’t sign it.</li>
+<li>timestamp value is not string, so don’t sign it</li>
+</ul>
+<p>######splice <em>apiSecret</em>
+<code>&quot;id=userId&amp;username=username&amp;abcdefg&quot;</code></p>
+<p>######Sha256 encrypt
+<code>&quot;309403f3d530eaad5f716e88539fb7fea94b954643cd9bdb078938c27602e6ea&quot;</code></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/15/2020</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 TC</section></footer></div></body></html>
